@@ -5,6 +5,9 @@ plugins {
 
 ext{
     roomVersion = '2.4.2'
+    okHttp3Version = '4.9.3'
+    retrofitVersion = '2.9.0'
+    coroutinesVersion = '1.6.0'
 }
 
 android {
@@ -24,6 +27,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        all {
+            buildConfigField "String", 'BASE_URL', "\"https://gist.githubusercontent.com/Yoann-LeBreton\""
         }
     }
     compileOptions {
@@ -57,4 +63,17 @@ dependencies {
 
     implementation("androidx.room:room-runtime:$roomVersion")
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
+
+    // https://github.com/square/retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    // https://github.com/square/okhttp
+    implementation "com.squareup.okhttp3:okhttp:$okHttp3Version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttp3Version"
+    // https://github.com/Kotlin/kotlinx.coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+
+
+
 }

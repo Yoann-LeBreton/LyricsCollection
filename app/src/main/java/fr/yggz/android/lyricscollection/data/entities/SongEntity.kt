@@ -1,4 +1,4 @@
-package fr.yggz.android.lyricscollection.models.entities
+package fr.yggz.android.lyricscollection.data.entities
 
 
 data class SongEntity(

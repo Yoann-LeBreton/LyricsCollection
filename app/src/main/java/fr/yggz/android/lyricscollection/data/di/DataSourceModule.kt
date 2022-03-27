@@ -2,11 +2,9 @@ package fr.yggz.android.lyricscollection.data.di
 
 import fr.yggz.android.lyricscollection.BuildConfig
 import fr.yggz.android.lyricscollection.data.api.SongsApi
+import fr.yggz.android.lyricscollection.data.database.AlbumDao
 import fr.yggz.android.lyricscollection.data.database.SongDao
-import fr.yggz.android.lyricscollection.data.datasources.SongsLocalDataSource
-import fr.yggz.android.lyricscollection.data.datasources.SongsLocalDataSourceImpl
-import fr.yggz.android.lyricscollection.data.datasources.SongsRemoteDataSource
-import fr.yggz.android.lyricscollection.data.datasources.SongsRemoteDataSourceImpl
+import fr.yggz.android.lyricscollection.data.datasources.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.module.Module
@@ -19,10 +17,14 @@ val DataSourceModule: Module = module {
     single(definition = { retrofitWS<SongsApi>(get(), BuildConfig.BASE_URL) })
     single<SongsRemoteDataSource>(definition = { SongsRemoteDataSourceImpl()})
     single<SongsLocalDataSource> (definition = { provideSongsLocalDataSource(get()) })
+    single<AlbumLocalDataSource> (definition = { provideAlbumLocalDataSource(get()) })
 }
 
 fun provideSongsLocalDataSource(songDao: SongDao): SongsLocalDataSource{
     return SongsLocalDataSourceImpl(songDao = songDao)
+}
+fun provideAlbumLocalDataSource(albumDao: AlbumDao) : AlbumLocalDataSource{
+    return AlbumLocalDataSourceImpl(albumDao = albumDao)
 }
 
 inline fun <reified T> retrofitWS(okHttpClient: OkHttpClient, url: String): T {

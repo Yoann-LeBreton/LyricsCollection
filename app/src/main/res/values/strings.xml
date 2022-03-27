@@ -4,6 +4,4 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
-    <!-- Database -->
-    <string name="database_name">lyrics_database.db</string>
 </resources>

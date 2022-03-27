@@ -7,7 +7,5 @@ import org.koin.core.component.inject
 class SyncSongsUseCase: KoinComponent {
     private val songsRepository: SongsRepository by inject()
 
-    suspend operator fun invoke() {
-        songsRepository.syncSongs()
-    }
+    suspend operator fun invoke()  = songsRepository.syncSongs()
 }

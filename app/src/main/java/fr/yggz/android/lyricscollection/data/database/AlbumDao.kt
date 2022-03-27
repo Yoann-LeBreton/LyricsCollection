@@ -4,15 +4,15 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import fr.yggz.android.lyricscollection.models.database.SongDb
+import fr.yggz.android.lyricscollection.models.database.AlbumDb
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface SongDao {
+interface AlbumDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(songs: List<SongDb>)
+    suspend fun insert(albums: List<AlbumDb>)
 
-    @Query("SELECT * FROM song_table")
-    fun getSongs(): Flow<List<SongDb>>
+    @Query("SELECT * FROM album_table")
+    fun getAlbums(): Flow<List<AlbumDb>>
 }

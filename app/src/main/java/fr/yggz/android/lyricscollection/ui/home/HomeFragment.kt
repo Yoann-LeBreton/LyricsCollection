@@ -6,12 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import fr.yggz.android.lyricscollection.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
+    private val homeViewModel : HomeViewModel by viewModels<HomeViewModel>()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,9 +23,6 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -33,6 +31,11 @@ class HomeFragment : Fragment() {
             textView.text = it
         }
         return root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        homeViewModel.syncSongs()
+        super.onCreate(savedInstanceState)
     }
 
     override fun onDestroyView() {

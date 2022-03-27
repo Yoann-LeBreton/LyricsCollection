@@ -1,11 +1,11 @@
-package fr.yggz.android.lyricscollection.models.dao
+package fr.yggz.android.lyricscollection.models.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
-data class SongDao(
+@Entity(tableName = "song_table")
+data class SongDb(
     @PrimaryKey(autoGenerate = false)
     val id: Int,
     @ColumnInfo(name = "album_id")

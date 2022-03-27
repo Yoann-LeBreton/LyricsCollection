@@ -1,7 +1,7 @@
 package fr.yggz.android.lyricscollection.data.entities
 
 
-data class SongEntity(
+data class SongResponse(
     val albumId: Int,
     val id: Int,
     val title: String,

@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
+    id 'kotlin-android'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 ext{
@@ -8,7 +10,10 @@ ext{
     okHttp3Version = '4.9.3'
     retrofitVersion = '2.9.0'
     coroutinesVersion = '1.6.0'
+    koinVersion = '3.1.5'
 }
+
+def databaseVersion = "1"
 
 android {
     compileSdk 31
@@ -29,7 +34,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         all {
-            buildConfigField "String", 'BASE_URL', "\"https://gist.githubusercontent.com/Yoann-LeBreton\""
+            buildConfigField "String", 'BASE_URL', "\"https://gist.githubusercontent.com/Yoann-LeBreton/\""
+            buildConfigField("int", "DATABASE_VERSION",  databaseVersion)
         }
     }
     compileOptions {
@@ -45,7 +51,6 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
@@ -61,8 +66,12 @@ dependencies {
     // https://github.com/google/gson
     implementation 'com.google.code.gson:gson:2.9.0'
 
-    implementation("androidx.room:room-runtime:$roomVersion")
-    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    // Room for data persistence
+    api "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$roomVersion"
 
     // https://github.com/square/retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
@@ -74,6 +83,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
 
-
+    // Koin for Android
+    implementation "io.insert-koin:koin-android:$koinVersion"
 
 }

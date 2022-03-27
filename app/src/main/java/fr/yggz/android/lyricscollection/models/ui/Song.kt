@@ -1,6 +1,6 @@
 package fr.yggz.android.lyricscollection.models.ui
 
-sealed class Song(
+class Song(
     val id: Int,
     val title: String,
     val favorite: Boolean,

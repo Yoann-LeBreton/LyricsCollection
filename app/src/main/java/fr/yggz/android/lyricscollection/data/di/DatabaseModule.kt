@@ -13,6 +13,7 @@ val DatabaseModule : Module = module {
     fun provideDatabase(application: Application): LyricsDatabase{
         return Room.databaseBuilder(application, LyricsDatabase::class.java, "lyrics_database")
             .fallbackToDestructiveMigration()
+            .allowMainThreadQueries()
             .build()
     }
     fun provideSongDao(database: LyricsDatabase) : SongDao {

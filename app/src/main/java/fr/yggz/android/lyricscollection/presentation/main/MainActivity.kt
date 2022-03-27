@@ -1,4 +1,4 @@
-package fr.yggz.android.lyricscollection
+package fr.yggz.android.lyricscollection.presentation.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import fr.yggz.android.lyricscollection.R
 import fr.yggz.android.lyricscollection.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_album, R.id.navigation_song, R.id.navigation_favorite
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

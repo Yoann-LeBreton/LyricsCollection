@@ -1,6 +1,6 @@
 package fr.yggz.android.lyricscollection.models.ui
 
-sealed class Album(
+class Album(
     val id: Int,
     val title: String,
     val favorite: Boolean,

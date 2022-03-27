@@ -1,10 +1,8 @@
 package fr.yggz.android.lyricscollection.data.repositories
 
-import android.util.Log
 import fr.yggz.android.lyricscollection.data.datasources.AlbumLocalDataSource
 import fr.yggz.android.lyricscollection.data.datasources.SongsLocalDataSource
 import fr.yggz.android.lyricscollection.data.datasources.SongsRemoteDataSource
-import fr.yggz.android.lyricscollection.data.entities.SongResponse
 import fr.yggz.android.lyricscollection.domain.common.Constants
 import fr.yggz.android.lyricscollection.domain.common.Result
 import fr.yggz.android.lyricscollection.domain.repositories.SongsRepository
@@ -37,8 +35,9 @@ class SongsRepositoryImpl : SongsRepository , KoinComponent{
                         val now = Date(Timestamp(System.currentTimeMillis()).time)
                         val formatter = SimpleDateFormat(Constants.DATE_FORMAT, Locale.FRANCE)
                         Result.Success(formatter.format(now))
+                    }else{
+                        Result.Error(Exception("No data retrieve"))
                     }
-                    Result.Error(Exception("No data retrieve"))
                 }catch(ex: Exception){
                     Result.Error(ex)
                 }
@@ -50,4 +49,6 @@ class SongsRepositoryImpl : SongsRepository , KoinComponent{
     }
 
     override suspend fun getSongs(): Flow<List<SongDb>> =  songsLocalDataSource.getSongs()
+    override suspend fun getAlbums(): Flow<List<AlbumDb>> = albumLocalDataSource.getAlbums()
+    override suspend fun setAlbumFavorite(albumId: Int, favorite: Boolean) = albumLocalDataSource.setAlbumFavorite(albumId, favorite)
 }

@@ -13,4 +13,8 @@ class AlbumLocalDataSourceImpl(private val albumDao: AlbumDao) : AlbumLocalDataS
     override suspend fun getAlbums(): Flow<List<AlbumDb>> {
         return albumDao.getAlbums()
     }
+
+    override suspend fun setAlbumFavorite(albumId: Int, favorite: Boolean) {
+        return albumDao.updateFavorite(favorite, albumId)
+    }
 }

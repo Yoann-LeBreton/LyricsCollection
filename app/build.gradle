@@ -8,7 +8,10 @@ ext{
     okHttp3Version = '4.9.3'
     retrofitVersion = '2.9.0'
     coroutinesVersion = '1.6.0'
+    koinVersion = '3.1.5'
 }
+
+def databaseVersion = "1"
 
 android {
     compileSdk 31
@@ -29,7 +32,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         all {
-            buildConfigField "String", 'BASE_URL', "\"https://gist.githubusercontent.com/Yoann-LeBreton\""
+            buildConfigField "String", 'BASE_URL', "\"https://gist.githubusercontent.com/Yoann-LeBreton/\""
+            buildConfigField("int", "DATABASE_VERSION",  databaseVersion)
         }
     }
     compileOptions {
@@ -74,6 +78,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
 
-
+    // Koin for Android
+    implementation "io.insert-koin:koin-android:$koinVersion"
 
 }

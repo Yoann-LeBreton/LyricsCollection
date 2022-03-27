@@ -1,10 +1,10 @@
-package fr.yggz.android.lyricscollection.models.dao
+package fr.yggz.android.lyricscollection.models.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class AlbumDao(
+data class AlbumDb(
     @PrimaryKey(autoGenerate = false)
     val id: Int,
     val title: String,

@@ -50,4 +50,5 @@ class SongsRepositoryImpl : SongsRepository , KoinComponent{
 
     override suspend fun getSongs(): Flow<List<SongDb>> =  songsLocalDataSource.getSongs()
     override suspend fun getAlbums(): Flow<List<AlbumDb>> = albumLocalDataSource.getAlbums()
+    override suspend fun setAlbumFavorite(albumId: Int, favorite: Boolean) = albumLocalDataSource.setAlbumFavorite(albumId, favorite)
 }

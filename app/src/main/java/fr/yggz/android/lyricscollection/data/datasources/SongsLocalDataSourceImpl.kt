@@ -12,4 +12,8 @@ class SongsLocalDataSourceImpl(private val songDao: SongDao) : SongsLocalDataSou
     override suspend fun getSongs(): Flow<List<SongDb>> {
         return songDao.getSongs()
     }
+
+    override suspend fun getSongsByAlbumId(albumId: Int): Flow<List<SongDb>> {
+        return songDao.getSongsbyAlbumId(albumId)
+    }
 }

@@ -15,4 +15,7 @@ interface AlbumDao {
 
     @Query("SELECT * FROM album_table")
     fun getAlbums(): Flow<List<AlbumDb>>
+
+    @Query("UPDATE album_table SET favorite = :favorite WHERE id = :albumId")
+    fun updateFavorite(favorite: Boolean, albumId: Int)
 }

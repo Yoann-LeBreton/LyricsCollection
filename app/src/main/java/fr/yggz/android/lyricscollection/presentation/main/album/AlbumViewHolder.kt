@@ -5,7 +5,10 @@ import fr.yggz.android.lyricscollection.databinding.AlbumItemBinding
 import fr.yggz.android.lyricscollection.models.ui.Album
 
 class AlbumViewHolder(private val binding: AlbumItemBinding) : RecyclerView.ViewHolder(binding.root){
-    fun bind(album: Album){
+    fun bind(album: Album, onFavClick: (Album?) -> Unit){
         binding.album = album
+        binding.itemAlbumFav.setOnClickListener {
+            onFavClick(album)
+        }
     }
 }

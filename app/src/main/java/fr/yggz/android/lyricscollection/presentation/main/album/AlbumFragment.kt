@@ -37,7 +37,7 @@ class AlbumFragment : Fragment() {
         )
         _albumViewModel.albums.observe(viewLifecycleOwner){
             _albumAdapter.albumList = it
-            _albumAdapter.notifyItemRangeInserted(0, it.size)
+            _albumAdapter.notifyDataSetChanged()
         }
         _albumViewModel.getAlbums()
         return root
@@ -46,6 +46,11 @@ class AlbumFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _albumAdapter = AlbumAdapter(emptyList())
+        _albumAdapter.onFavClick = { album ->
+            album?.let {
+                _albumViewModel.updateAlbumFavorite(it.id, !it.favorite)
+            }
+        }
     }
 
     override fun onDestroyView() {

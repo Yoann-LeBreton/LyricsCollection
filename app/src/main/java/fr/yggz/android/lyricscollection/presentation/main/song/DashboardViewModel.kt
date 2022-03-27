@@ -1,4 +1,4 @@
-package fr.yggz.android.lyricscollection.ui.dashboard
+package fr.yggz.android.lyricscollection.presentation.main.song
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

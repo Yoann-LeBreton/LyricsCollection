@@ -1,4 +1,4 @@
-package fr.yggz.android.lyricscollection.ui.notifications
+package fr.yggz.android.lyricscollection.presentation.main.favorite
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

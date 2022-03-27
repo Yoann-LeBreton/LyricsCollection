@@ -37,8 +37,10 @@ class SongsRepositoryImpl : SongsRepository , KoinComponent{
                         val now = Date(Timestamp(System.currentTimeMillis()).time)
                         val formatter = SimpleDateFormat(Constants.DATE_FORMAT, Locale.FRANCE)
                         Result.Success(formatter.format(now))
+                    }else{
+                        Result.Error(Exception("No data retrieve"))
                     }
-                    Result.Error(Exception("No data retrieve"))
+
                 }catch(ex: Exception){
                     Result.Error(ex)
                 }

@@ -1,13 +1,8 @@
-package fr.yggz.android.lyricscollection.ui.home
+package fr.yggz.android.lyricscollection.presentation.main.album
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import fr.yggz.android.lyricscollection.domain.usecases.SyncSongsUseCase
-import kotlinx.coroutines.launch
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
 class HomeViewModel() : ViewModel(){
 

@@ -8,11 +8,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.core.widget.ContentLoadingProgressBar
-import fr.yggz.android.lyricscollection.MainActivity
 import fr.yggz.android.lyricscollection.R
 import fr.yggz.android.lyricscollection.domain.common.Constants
 import fr.yggz.android.lyricscollection.domain.common.SharedPrefConstants
 import fr.yggz.android.lyricscollection.domain.common.StateData
+import fr.yggz.android.lyricscollection.presentation.main.MainActivity
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*

@@ -1,4 +1,4 @@
-package fr.yggz.android.lyricscollection.ui.home
+package fr.yggz.android.lyricscollection.presentation.main.song
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import fr.yggz.android.lyricscollection.databinding.FragmentHomeBinding
+import fr.yggz.android.lyricscollection.databinding.FragmentDashboardBinding
 
-class HomeFragment : Fragment() {
+class DashboardFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
-    private val homeViewModel : HomeViewModel by viewModels<HomeViewModel>()
+    private var _binding: FragmentDashboardBinding? = null
+    private val dashboardViewModel: DashboardViewModel by viewModels<DashboardViewModel>()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,17 +23,19 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
+        val textView: TextView = binding.textDashboard
+        dashboardViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        dashboardViewModel.getSongs()
         super.onCreate(savedInstanceState)
     }
 

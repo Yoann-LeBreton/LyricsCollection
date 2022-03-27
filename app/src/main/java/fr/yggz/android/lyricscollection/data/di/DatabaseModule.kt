@@ -2,6 +2,7 @@ package fr.yggz.android.lyricscollection.data.di
 
 import android.app.Application
 import androidx.room.Room
+import fr.yggz.android.lyricscollection.data.database.AlbumDao
 import fr.yggz.android.lyricscollection.data.database.LyricsDatabase
 import fr.yggz.android.lyricscollection.data.database.SongDao
 import org.koin.android.ext.koin.androidApplication
@@ -17,7 +18,11 @@ val DatabaseModule : Module = module {
     fun provideSongDao(database: LyricsDatabase) : SongDao {
         return database.songDao
     }
+    fun provideAlbumDao(database: LyricsDatabase) : AlbumDao {
+        return database.albumDao
+    }
 
     single<LyricsDatabase> { provideDatabase(androidApplication()) }
     single<SongDao> { provideSongDao(get()) }
+    single<AlbumDao> { provideAlbumDao(get()) }
 }

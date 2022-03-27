@@ -34,7 +34,6 @@ class HomeFragment : Fragment() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        homeViewModel.syncSongs()
         super.onCreate(savedInstanceState)
     }
 

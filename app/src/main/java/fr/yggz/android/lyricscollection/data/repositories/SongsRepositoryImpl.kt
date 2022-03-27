@@ -1,10 +1,8 @@
 package fr.yggz.android.lyricscollection.data.repositories
 
-import android.util.Log
 import fr.yggz.android.lyricscollection.data.datasources.AlbumLocalDataSource
 import fr.yggz.android.lyricscollection.data.datasources.SongsLocalDataSource
 import fr.yggz.android.lyricscollection.data.datasources.SongsRemoteDataSource
-import fr.yggz.android.lyricscollection.data.entities.SongResponse
 import fr.yggz.android.lyricscollection.domain.common.Constants
 import fr.yggz.android.lyricscollection.domain.common.Result
 import fr.yggz.android.lyricscollection.domain.repositories.SongsRepository
@@ -51,4 +49,5 @@ class SongsRepositoryImpl : SongsRepository , KoinComponent{
     }
 
     override suspend fun getSongs(): Flow<List<SongDb>> =  songsLocalDataSource.getSongs()
+    override suspend fun getAlbums(): Flow<List<AlbumDb>> = albumLocalDataSource.getAlbums()
 }

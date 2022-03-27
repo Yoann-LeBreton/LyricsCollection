@@ -3,10 +3,10 @@ package fr.yggz.android.lyricscollection.presentation.splashscreen
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.ContentLoadingProgressBar
 import fr.yggz.android.lyricscollection.R
 import fr.yggz.android.lyricscollection.domain.common.Constants

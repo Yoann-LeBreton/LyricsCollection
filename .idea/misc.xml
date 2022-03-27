@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.23229166666666667" />
+        <entry key="app/src/main/res/layout/album_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_album.xml" value="0.42135416666666664" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.42135416666666664" />

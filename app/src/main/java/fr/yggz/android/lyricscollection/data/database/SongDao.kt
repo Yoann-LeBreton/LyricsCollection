@@ -14,5 +14,5 @@ interface SongDao {
     suspend fun insert(songs: List<SongDb>)
 
     @Query("SELECT * FROM song_table")
-    suspend fun getSongs(): Flow<List<SongDb>>
+    fun getSongs(): Flow<List<SongDb>>
 }

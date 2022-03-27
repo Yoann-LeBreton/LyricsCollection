@@ -18,7 +18,7 @@ val DataSourceModule: Module = module {
     single { createClient() }
     single(definition = { retrofitWS<SongsApi>(get(), BuildConfig.BASE_URL) })
     single<SongsRemoteDataSource>(definition = { SongsRemoteDataSourceImpl()})
-    single { provideSongsLocalDataSource(get()) }
+    single<SongsLocalDataSource> (definition = { provideSongsLocalDataSource(get()) })
 }
 
 fun provideSongsLocalDataSource(songDao: SongDao): SongsLocalDataSource{

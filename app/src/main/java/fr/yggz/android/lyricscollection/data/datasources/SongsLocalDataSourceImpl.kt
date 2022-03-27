@@ -3,8 +3,6 @@ package fr.yggz.android.lyricscollection.data.datasources
 import fr.yggz.android.lyricscollection.data.database.SongDao
 import fr.yggz.android.lyricscollection.models.database.SongDb
 import kotlinx.coroutines.flow.Flow
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
 class SongsLocalDataSourceImpl(private val songDao: SongDao) : SongsLocalDataSource{
 

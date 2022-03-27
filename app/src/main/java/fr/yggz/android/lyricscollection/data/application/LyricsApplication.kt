@@ -9,6 +9,7 @@ class LyricsApplication :  Application() {
 
     override fun onCreate() {
         super.onCreate()
+
         startKoin{
             androidContext(this@LyricsApplication)
             modules(
@@ -20,4 +21,5 @@ class LyricsApplication :  Application() {
             )
         }
     }
+
 }

@@ -1,9 +1,10 @@
 package fr.yggz.android.lyricscollection.data.repositories
 
+import fr.yggz.android.lyricscollection.data.database.LyricsDatabase
 import fr.yggz.android.lyricscollection.data.datasources.SongsLocalDataSource
 import fr.yggz.android.lyricscollection.data.datasources.SongsRemoteDataSource
-import fr.yggz.android.lyricscollection.domain.repositories.SongsRepository
 import fr.yggz.android.lyricscollection.domain.common.Result
+import fr.yggz.android.lyricscollection.domain.repositories.SongsRepository
 import fr.yggz.android.lyricscollection.models.database.SongDb
 import kotlinx.coroutines.flow.Flow
 import org.koin.core.component.KoinComponent
@@ -17,9 +18,11 @@ class SongsRepositoryImpl : SongsRepository , KoinComponent{
         return when(val resultSongs = remoteDataSource.getSongs()){
             is Result.Success -> {
                 try {
-                    if(resultSongs.data != null && resultSongs.data.isNotEmpty()) localDataSource.insertSongs(resultSongs.data.map {
-                        SongDb(id = it.id, albumId = it.albumId, title = it.title, favorite = false, pictureUrl = it.url, it.thumbnailUrl)
-                    })
+                    if(resultSongs.data != null && resultSongs.data.isNotEmpty()) {
+                        localDataSource.insertSongs(resultSongs.data.map {
+                            SongDb(id = it.id, albumId = it.albumId, title = it.title, favorite = false, pictureUrl = it.url, it.thumbnailUrl)
+                        })
+                    }
                     Result.Success("now")
                 }catch(ex: Exception){
                     Result.Error(ex)
@@ -31,5 +34,5 @@ class SongsRepositoryImpl : SongsRepository , KoinComponent{
         }
     }
 
-    override suspend fun getSongs(): Flow<List<SongDb>> = localDataSource.getSongs()
+    override suspend fun getSongs(): Flow<List<SongDb>> =  localDataSource.getSongs()
 }

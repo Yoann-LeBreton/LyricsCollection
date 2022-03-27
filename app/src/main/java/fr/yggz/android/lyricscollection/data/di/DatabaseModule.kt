@@ -2,7 +2,6 @@ package fr.yggz.android.lyricscollection.data.di
 
 import android.app.Application
 import androidx.room.Room
-import fr.yggz.android.lyricscollection.R
 import fr.yggz.android.lyricscollection.data.database.LyricsDatabase
 import fr.yggz.android.lyricscollection.data.database.SongDao
 import org.koin.android.ext.koin.androidApplication
@@ -18,12 +17,7 @@ val DatabaseModule : Module = module {
     fun provideSongDao(database: LyricsDatabase) : SongDao {
         return database.songDao
     }
-    single {
-        Room.databaseBuilder(get(), LyricsDatabase::class.java, "lyrics_database")
-            .fallbackToDestructiveMigration()
-            .build()
-    }
-    single { get<LyricsDatabase>().songDao }
-    //single<LyricsDatabase> { provideDatabase(androidApplication()) }
-    //single<SongDao> { provideSongDao(get()) }
+
+    single<LyricsDatabase> { provideDatabase(androidApplication()) }
+    single<SongDao> { provideSongDao(get()) }
 }

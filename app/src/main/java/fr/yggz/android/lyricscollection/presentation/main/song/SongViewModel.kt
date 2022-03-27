@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class DashboardViewModel : ViewModel(), KoinComponent {
+class SongViewModel : ViewModel(), KoinComponent {
 
     private val getSongsUseCase: GetSongsUseCase by inject()
 

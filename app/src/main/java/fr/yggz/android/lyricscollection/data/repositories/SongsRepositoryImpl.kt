@@ -40,7 +40,6 @@ class SongsRepositoryImpl : SongsRepository , KoinComponent{
                     }else{
                         Result.Error(Exception("No data retrieve"))
                     }
-
                 }catch(ex: Exception){
                     Result.Error(ex)
                 }

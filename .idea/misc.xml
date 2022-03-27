@@ -5,15 +5,15 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.23229166666666667" />
+        <entry key="app/src/main/res/layout/fragment_album.xml" value="0.42135416666666664" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.13697916666666668" />
+        <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.42135416666666664" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.13697916666666668" />
+        <entry key="app/src/main/res/layout/fragment_song.xml" value="0.42135416666666664" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.13697916666666668" />
       </map>
     </option>
-  </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

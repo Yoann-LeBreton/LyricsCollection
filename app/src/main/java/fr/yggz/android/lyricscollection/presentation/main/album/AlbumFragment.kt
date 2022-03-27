@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import fr.yggz.android.lyricscollection.databinding.FragmentHomeBinding
+import fr.yggz.android.lyricscollection.databinding.FragmentAlbumBinding
 
-class HomeFragment : Fragment() {
+class AlbumFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
-    private val homeViewModel : HomeViewModel by viewModels<HomeViewModel>()
+    private var _binding: FragmentAlbumBinding? = null
+    private val homeViewModel : AlbumViewModel by viewModels<AlbumViewModel>()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,10 +23,10 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentAlbumBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
+        val textView: TextView = binding.textAlbum
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }

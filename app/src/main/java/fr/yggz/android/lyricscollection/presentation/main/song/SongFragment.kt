@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import fr.yggz.android.lyricscollection.databinding.FragmentDashboardBinding
+import fr.yggz.android.lyricscollection.databinding.FragmentSongBinding
 
-class DashboardFragment : Fragment() {
+class SongFragment : Fragment() {
 
-    private var _binding: FragmentDashboardBinding? = null
-    private val dashboardViewModel: DashboardViewModel by viewModels<DashboardViewModel>()
+    private var _binding: FragmentSongBinding? = null
+    private val songViewModel: SongViewModel by viewModels<SongViewModel>()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,18 +24,18 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentSongBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
+        val textView: TextView = binding.textSong
+        songViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        dashboardViewModel.getSongs()
+        songViewModel.getSongs()
         super.onCreate(savedInstanceState)
     }
 

@@ -87,4 +87,7 @@ dependencies {
     // Koin for Android
     implementation "io.insert-koin:koin-android:$koinVersion"
 
+    // https://github.com/square/picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 }

@@ -4,4 +4,5 @@
     <string name="title_song">Songs</string>
     <string name="title_favorite">Favorites</string>
 
+    <string name="error_retrieve_data">Impossible de récupérer les données distantes</string>
 </resources>

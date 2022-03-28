@@ -4,6 +4,7 @@ import fr.yggz.android.lyricscollection.data.datasources.AlbumLocalDataSource
 import fr.yggz.android.lyricscollection.data.datasources.SongsLocalDataSource
 import fr.yggz.android.lyricscollection.data.datasources.SongsRemoteDataSource
 import fr.yggz.android.lyricscollection.domain.common.Constants
+import fr.yggz.android.lyricscollection.domain.common.ManageExceptions
 import fr.yggz.android.lyricscollection.domain.common.Result
 import fr.yggz.android.lyricscollection.domain.repositories.SongsRepository
 import fr.yggz.android.lyricscollection.models.database.AlbumDb
@@ -29,10 +30,14 @@ class SongsRepositoryImpl(
                         val albums : List<AlbumDb> = resultSongs.data
                             .groupBy { it.albumId }
                             .map { (key, _) -> AlbumDb(id = key, title = "Album n°$key", favorite = false)}
-                        songsLocalDataSource.insertSongs(resultSongs.data.map {
-                            SongDb(id = it.id, albumId = it.albumId, title = it.title, favorite = false, pictureUrl = it.url, it.thumbnailUrl)
-                        })
-                        albumLocalDataSource.insertAlbums(albums)
+                        try{
+                            songsLocalDataSource.insertSongs(resultSongs.data.map {
+                                SongDb(id = it.id, albumId = it.albumId, title = it.title, favorite = false, pictureUrl = it.url, it.thumbnailUrl)
+                            })
+                            albumLocalDataSource.insertAlbums(albums)
+                        }catch (dbEx: Exception){
+                            Result.Error(ManageExceptions.WriteLocalDBException(dbEx.message ?: "Failed to insert datas"))
+                        }
                         val now = Date(Timestamp(System.currentTimeMillis()).time)
                         val formatter = SimpleDateFormat(Constants.DATE_FORMAT, Locale.FRANCE)
                         Result.Success(formatter.format(now))

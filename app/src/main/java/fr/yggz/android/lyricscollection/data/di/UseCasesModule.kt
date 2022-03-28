@@ -1,9 +1,6 @@
 package fr.yggz.android.lyricscollection.data.di
 
-import fr.yggz.android.lyricscollection.domain.usecases.GetAlbumsUseCase
-import fr.yggz.android.lyricscollection.domain.usecases.GetSongsUseCase
-import fr.yggz.android.lyricscollection.domain.usecases.SetAlbumFavoriteUseCase
-import fr.yggz.android.lyricscollection.domain.usecases.SyncSongsUseCase
+import fr.yggz.android.lyricscollection.domain.usecases.*
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -12,4 +9,5 @@ val UseCasesModule: Module = module {
     single { GetSongsUseCase() }
     single { GetAlbumsUseCase() }
     single { SetAlbumFavoriteUseCase() }
+    single { SetSongFavoriteUseCase() }
 }

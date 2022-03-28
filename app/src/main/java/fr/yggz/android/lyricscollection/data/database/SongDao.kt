@@ -18,4 +18,7 @@ interface SongDao {
 
     @Query("SELECT * FROM song_table WHERE album_id IN(:albumId)")
     fun getSongsbyAlbumId(albumId: Int): Flow<List<SongDb>>
+
+    @Query("UPDATE song_table SET favorite = :favorite WHERE id = :songId")
+    fun updateFavorite(songId: Int, favorite: Boolean)
 }

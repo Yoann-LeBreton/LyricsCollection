@@ -48,7 +48,7 @@ class SongFragment : Fragment() {
         _songAdapter = SongAdapter(emptyList())
         _songAdapter.onFavClick = { song ->
             song?.let {
-
+                _songViewModel.updateSongFavorite(it.id, !it.favorite)
             }
         }
     }

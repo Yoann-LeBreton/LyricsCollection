@@ -2,6 +2,7 @@ package fr.yggz.android.lyricscollection.data.datasources
 
 import fr.yggz.android.lyricscollection.data.api.SongsApi
 import fr.yggz.android.lyricscollection.data.entities.SongResponse
+import fr.yggz.android.lyricscollection.domain.common.ManageExceptions
 import fr.yggz.android.lyricscollection.domain.common.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -16,9 +17,9 @@ class SongsRemoteDataSourceImpl(private val songsApi: SongsApi) : SongsRemoteDat
                 if(response.isSuccessful){
                     return@withContext Result.Success(response.body())
                 }
-                return@withContext Result.Error(Exception(response.message()))
+                return@withContext Result.Error(ManageExceptions.manageNetworkError(response.code(), response.message()))
             }catch (ex: Exception){
-                return@withContext Result.Error(ex)
+                return@withContext Result.Error(ManageExceptions.UnknowException(ex.message ?: "Unknow error from remoteDatasource"))
             }
         }
 }

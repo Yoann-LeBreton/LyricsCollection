@@ -4,12 +4,16 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.ContentLoadingProgressBar
 import fr.yggz.android.lyricscollection.R
 import fr.yggz.android.lyricscollection.domain.common.Constants
+import fr.yggz.android.lyricscollection.domain.common.Constants.Companion.MINUTE_BETWEEN_SYNC
 import fr.yggz.android.lyricscollection.domain.common.SharedPrefConstants
 import fr.yggz.android.lyricscollection.domain.common.StateData
 import fr.yggz.android.lyricscollection.presentation.main.MainActivity
@@ -34,6 +38,10 @@ class SplashScreenActivity : AppCompatActivity() {
                 }
                 StateData.Status.ERROR -> {
                     progressBar.visibility = View.GONE
+                    Toast.makeText(this, resources.getString(R.string.error_retrieve_data), Toast.LENGTH_LONG).show()
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        redirect()
+                    }, 4000)
                 }
                 StateData.Status.SUCCESS -> {
                     progressBar.visibility = View.GONE
@@ -65,7 +73,7 @@ class SplashScreenActivity : AppCompatActivity() {
         try {
             val dateLastSync = SimpleDateFormat(Constants.DATE_FORMAT).parse(lastSync)
             val calendar = Calendar.getInstance()
-            calendar.add(Calendar.MINUTE, -10)
+            calendar.add(Calendar.MINUTE, -MINUTE_BETWEEN_SYNC)
             val expirationDate : Date = calendar.time
             dateLastSync?.let {
                 return dateLastSync.before(expirationDate)

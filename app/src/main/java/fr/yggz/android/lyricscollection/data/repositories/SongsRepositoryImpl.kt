@@ -15,10 +15,11 @@ import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
 
-class SongsRepositoryImpl : SongsRepository , KoinComponent{
-    private val remoteDataSource: SongsRemoteDataSource by inject()
-    private val songsLocalDataSource: SongsLocalDataSource by inject()
-    private val albumLocalDataSource: AlbumLocalDataSource by inject()
+class SongsRepositoryImpl(
+    private val remoteDataSource: SongsRemoteDataSource,
+    private val songsLocalDataSource: SongsLocalDataSource,
+    private val albumLocalDataSource: AlbumLocalDataSource,
+) : SongsRepository{
 
     override suspend fun syncSongs(): Result<String> {
         return when(val resultSongs = remoteDataSource.getSongs()){

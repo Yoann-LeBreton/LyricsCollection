@@ -11,7 +11,8 @@ ext{
     retrofitVersion = '2.9.0'
     coroutinesVersion = '1.6.0'
     koinVersion = '3.1.5'
-    mockkVersion = '1.12.3'
+    mockitoKotlinVersion = '4.0.0'
+    mockitoVersion = '4.4.0'
 }
 
 def databaseVersion = "1"
@@ -91,4 +92,8 @@ dependencies {
     // https://github.com/square/picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    // Optional -- Mockito framework
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    // Optional -- mockito-kotlin
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion"
 }

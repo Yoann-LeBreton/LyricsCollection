@@ -8,9 +8,7 @@ import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class SongsRemoteDataSourceImpl : SongsRemoteDataSource, KoinComponent{
-    private val songsApi: SongsApi by inject()
-
+class SongsRemoteDataSourceImpl(private val songsApi: SongsApi) : SongsRemoteDataSource{
     override suspend fun getSongs(): Result<List<SongResponse>?> =
         withContext(Dispatchers.IO){
             try{

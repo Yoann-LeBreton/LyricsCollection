@@ -11,6 +11,7 @@ ext{
     retrofitVersion = '2.9.0'
     coroutinesVersion = '1.6.0'
     koinVersion = '3.1.5'
+    mockkVersion = '1.12.3'
 }
 
 def databaseVersion = "1"

@@ -15,9 +15,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 val DataSourceModule: Module = module {
     single { createClient() }
     single(definition = { retrofitWS<SongsApi>(get(), BuildConfig.BASE_URL) })
-    single<SongsRemoteDataSource>(definition = { SongsRemoteDataSourceImpl()})
-    single<SongsLocalDataSource> (definition = { provideSongsLocalDataSource(get()) })
-    single<AlbumLocalDataSource> (definition = { provideAlbumLocalDataSource(get()) })
+    single<SongsRemoteDataSource>(definition = { SongsRemoteDataSourceImpl(get())})
+    single<SongsLocalDataSource> (definition = { SongsLocalDataSourceImpl(songDao = get()) })
+    single<AlbumLocalDataSource> (definition = { AlbumLocalDataSourceImpl(albumDao = get()) })
 }
 
 fun provideSongsLocalDataSource(songDao: SongDao): SongsLocalDataSource{

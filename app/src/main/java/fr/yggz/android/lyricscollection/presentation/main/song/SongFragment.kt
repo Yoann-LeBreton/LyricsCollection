@@ -1,5 +1,6 @@
 package fr.yggz.android.lyricscollection.presentation.main.song
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import fr.yggz.android.lyricscollection.databinding.DialogDetailsSongBinding
 import fr.yggz.android.lyricscollection.databinding.FragmentSongBinding
 
 class SongFragment : Fragment() {
@@ -53,6 +55,15 @@ class SongFragment : Fragment() {
         _songAdapter.onFavClick = { song ->
             song?.let {
                 _songViewModel.updateSongFavorite(it.id, !it.favorite)
+            }
+        }
+        _songAdapter.onItemClick = { song ->
+            song?.let {
+                val viewSongDetails = DialogDetailsSongBinding.inflate(LayoutInflater.from(requireContext()), binding.root as ViewGroup,false)
+                viewSongDetails.song = song
+                val dialog = Dialog(requireContext())
+                dialog.setContentView(viewSongDetails.root)
+                dialog.show()
             }
         }
     }

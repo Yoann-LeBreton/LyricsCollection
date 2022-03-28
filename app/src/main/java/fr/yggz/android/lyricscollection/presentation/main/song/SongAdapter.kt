@@ -9,6 +9,7 @@ import fr.yggz.android.lyricscollection.models.ui.Song
 class SongAdapter(var songList: List<Song>) : RecyclerView.Adapter<SongViewHolder>(){
     private lateinit var binding : SongItemBinding
     lateinit var onFavClick: ((Song?) -> Unit)
+    lateinit var onItemClick: ((Song?) -> Unit)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
         binding = SongItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -17,7 +18,7 @@ class SongAdapter(var songList: List<Song>) : RecyclerView.Adapter<SongViewHolde
 
     override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
         val song = songList[position]
-        holder.bind(song, onFavClick)
+        holder.bind(song, onFavClick, onItemClick)
     }
 
     override fun getItemCount(): Int = songList.size

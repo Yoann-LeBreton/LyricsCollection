@@ -21,4 +21,8 @@ class SongsLocalDataSourceImpl(private val songDao: SongDao) : SongsLocalDataSou
     override suspend fun setSongFavorite(songId: Int, favorite: Boolean) {
         return songDao.updateFavorite(songId, favorite)
     }
+
+    override suspend fun getFavoriteSongs(): Flow<List<SongDb>> {
+        return songDao.getFavoriteSongs()
+    }
 }

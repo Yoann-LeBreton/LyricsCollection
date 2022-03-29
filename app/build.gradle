@@ -104,10 +104,11 @@ dependencies {
     implementation "io.insert-koin:koin-android:$koinVersion"
 
     // https://github.com/square/picasso
+    // Help to get image content by URL
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    // Optional -- Mockito framework
+    // Mockito framework
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
-    // Optional -- mockito-kotlin
+    // Mockito-kotlin
     testImplementation "org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion"
 }

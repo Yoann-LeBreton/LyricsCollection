@@ -12,4 +12,5 @@ interface SongsRepository {
     suspend fun setAlbumFavorite(albumId: Int, favorite: Boolean)
     suspend fun setSongFavorite(songId: Int, favorite: Boolean)
     suspend fun getSongsByAlbumId(albumId: Int): Flow<List<SongDb>>
+    suspend fun getFavoriteSongs(): Flow<List<SongDb>>
 }

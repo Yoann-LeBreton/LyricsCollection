@@ -1,6 +1,7 @@
 package fr.yggz.android.lyricscollection.data.di
 
 import fr.yggz.android.lyricscollection.presentation.main.album.AlbumViewModel
+import fr.yggz.android.lyricscollection.presentation.main.favorite.FavoriteViewModel
 import fr.yggz.android.lyricscollection.presentation.main.song.SongViewModel
 import fr.yggz.android.lyricscollection.presentation.splashscreen.SplashViewModel
 import fr.yggz.android.lyricscollection.presentation.tablet.TabletViewModel
@@ -17,6 +18,9 @@ val ViewModelModule: Module = module {
     }
     viewModel {
         SongViewModel()
+    }
+    viewModel {
+        FavoriteViewModel()
     }
     viewModel {
         TabletViewModel()

@@ -79,4 +79,6 @@ class SongsRepositoryImpl(
 
     override suspend fun getSongsByAlbumId(albumId: Int): Flow<List<SongDb>> =
         songsLocalDataSource.getSongsByAlbumId(albumId)
+
+    override suspend fun getFavoriteSongs(): Flow<List<SongDb>> = songsLocalDataSource.getFavoriteSongs()
 }

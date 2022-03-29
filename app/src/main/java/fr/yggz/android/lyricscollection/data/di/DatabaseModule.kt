@@ -9,17 +9,19 @@ import org.koin.android.ext.koin.androidApplication
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-val DatabaseModule : Module = module {
-    fun provideDatabase(application: Application): LyricsDatabase{
+val DatabaseModule: Module = module {
+    fun provideDatabase(application: Application): LyricsDatabase {
         return Room.databaseBuilder(application, LyricsDatabase::class.java, "lyrics_database")
             .fallbackToDestructiveMigration()
             .allowMainThreadQueries()
             .build()
     }
-    fun provideSongDao(database: LyricsDatabase) : SongDao {
+
+    fun provideSongDao(database: LyricsDatabase): SongDao {
         return database.songDao
     }
-    fun provideAlbumDao(database: LyricsDatabase) : AlbumDao {
+
+    fun provideAlbumDao(database: LyricsDatabase): AlbumDao {
         return database.albumDao
     }
 

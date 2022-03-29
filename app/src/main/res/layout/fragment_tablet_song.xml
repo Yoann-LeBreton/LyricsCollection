@@ -8,10 +8,10 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.main.song.SongFragment">
+        tools:context=".presentation.tablet.song.TabletSongFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_songs"
+            android:id="@+id/recycler_view_tablet_songs"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"

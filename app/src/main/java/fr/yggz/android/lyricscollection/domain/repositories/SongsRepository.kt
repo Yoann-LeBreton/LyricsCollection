@@ -9,6 +9,7 @@ interface SongsRepository {
     suspend fun syncSongs(): Result<String>
     suspend fun getSongs(): Flow<List<SongDb>>
     suspend fun getAlbums(): Flow<List<AlbumDb>>
-    suspend fun setAlbumFavorite(albumId: Int, favorite:Boolean)
+    suspend fun setAlbumFavorite(albumId: Int, favorite: Boolean)
     suspend fun setSongFavorite(songId: Int, favorite: Boolean)
+    suspend fun getSongsByAlbumId(albumId: Int): Flow<List<SongDb>>
 }

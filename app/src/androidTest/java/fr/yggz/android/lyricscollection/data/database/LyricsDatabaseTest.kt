@@ -29,13 +29,20 @@ class LyricsDatabaseTest : TestCase() {
     }
 
     @After
-    fun closeDb(){
+    fun closeDb() {
         lyricsDatabase.close()
     }
 
     @Test
-    fun testWriteAndReadSongDao() = runBlocking{
-        val song : SongDb = SongDb(id = 22, albumId = 3, title = "Sing Song", favorite = false, pictureUrl = "pic.png", thumbnailUrl = "thumb.png")
+    fun testWriteAndReadSongDao() = runBlocking {
+        val song: SongDb = SongDb(
+            id = 22,
+            albumId = 3,
+            title = "Sing Song",
+            favorite = false,
+            pictureUrl = "pic.png",
+            thumbnailUrl = "thumb.png"
+        )
         songDao.insert(listOf(song))
         val songs = songDao.getSongs().first()
         assertTrue(songs.contains(song))
@@ -43,15 +50,22 @@ class LyricsDatabaseTest : TestCase() {
 
     @Test
     fun testWriteAndReadAlbumDao() = runBlocking {
-        val album : AlbumDb = AlbumDb(id = 88, title = "Album 88", favorite = false)
+        val album: AlbumDb = AlbumDb(id = 88, title = "Album 88", favorite = false)
         albumDao.insert(listOf(album))
         val albums = albumDao.getAlbums().first()
         assertTrue(albums.contains(album))
     }
 
     @Test
-    fun updateFavoriteSongDao() = runBlocking{
-        val song : SongDb = SongDb(id = 22, albumId = 3, title = "Sing Song", favorite = false, pictureUrl = "pic.png", thumbnailUrl = "thumb.png")
+    fun updateFavoriteSongDao() = runBlocking {
+        val song: SongDb = SongDb(
+            id = 22,
+            albumId = 3,
+            title = "Sing Song",
+            favorite = false,
+            pictureUrl = "pic.png",
+            thumbnailUrl = "thumb.png"
+        )
         songDao.insert(listOf(song))
         songDao.updateFavorite(song.id, !song.favorite)
         val songs = songDao.getSongs().first()
@@ -60,8 +74,8 @@ class LyricsDatabaseTest : TestCase() {
     }
 
     @Test
-    fun updateFavoriteAlbumDao() = runBlocking{
-        val album : AlbumDb = AlbumDb(id = 88, title = "Album 88", favorite = false)
+    fun updateFavoriteAlbumDao() = runBlocking {
+        val album: AlbumDb = AlbumDb(id = 88, title = "Album 88", favorite = false)
         albumDao.insert(listOf(album))
         albumDao.updateFavorite(!album.favorite, album.id)
         val albums = albumDao.getAlbums().first()

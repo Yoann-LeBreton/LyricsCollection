@@ -7,11 +7,12 @@ import fr.yggz.android.lyricscollection.models.database.AlbumDb
 import fr.yggz.android.lyricscollection.models.database.SongDb
 
 @Database(
-    entities = [ SongDb::class, AlbumDb::class ],
+    entities = [SongDb::class, AlbumDb::class],
     version = BuildConfig.DATABASE_VERSION,
-    exportSchema = false)
+    exportSchema = false
+)
 
-abstract class LyricsDatabase : RoomDatabase(){
-    abstract val songDao : SongDao
-    abstract val albumDao : AlbumDao
+abstract class LyricsDatabase : RoomDatabase() {
+    abstract val songDao: SongDao
+    abstract val albumDao: AlbumDao
 }

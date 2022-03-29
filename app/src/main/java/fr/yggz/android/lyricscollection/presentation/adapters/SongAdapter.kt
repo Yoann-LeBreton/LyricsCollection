@@ -1,4 +1,4 @@
-package fr.yggz.android.lyricscollection.presentation.main.song
+package fr.yggz.android.lyricscollection.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import fr.yggz.android.lyricscollection.databinding.SongItemBinding
 import fr.yggz.android.lyricscollection.models.ui.Song
 
-class SongAdapter(var songList: List<Song>) : RecyclerView.Adapter<SongViewHolder>(){
-    private lateinit var binding : SongItemBinding
+class SongAdapter(var songList: List<Song>) : RecyclerView.Adapter<SongViewHolder>() {
+    private lateinit var binding: SongItemBinding
     lateinit var onFavClick: ((Song?) -> Unit)
     lateinit var onItemClick: ((Song?) -> Unit)
 

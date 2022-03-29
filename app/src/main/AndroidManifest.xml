@@ -16,6 +16,7 @@
             android:name=".presentation.splashscreen.SplashScreenActivity"
             android:exported="true"
             android:noHistory="true"
+            android:configChanges="uiMode"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

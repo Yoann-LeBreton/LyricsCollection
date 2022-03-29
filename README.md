@@ -42,5 +42,9 @@ Application de consultation de musiques
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/Yoann-LeBreton/LyricsCollection/develop/screenshots/Screenshot_1648586814.png" width="50%" height="50%">
+<img src="https://raw.githubusercontent.com/Yoann-LeBreton/LyricsCollection/develop/screenshots/Screenshot_1648586814.png" width="25%" height="25">
+<img src="https://raw.githubusercontent.com/Yoann-LeBreton/LyricsCollection/develop/screenshots/Screenshot_1648586823.png" width="25%" height="25">
+<img src="https://raw.githubusercontent.com/Yoann-LeBreton/LyricsCollection/develop/screenshots/Screenshot_1648586828.png" width="25%" height="25">
+<img src="https://raw.githubusercontent.com/Yoann-LeBreton/LyricsCollection/develop/screenshots/Screenshot_1648587105.png" width="25%" height="25">
+<img src="https://raw.githubusercontent.com/Yoann-LeBreton/LyricsCollection/develop/screenshots/Screenshot_1648587112.png" width="25%" height="25">
 

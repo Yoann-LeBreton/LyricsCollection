@@ -7,16 +7,23 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1775" />
         <entry key="app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.1775" />
         <entry key="app/src/main/res/drawable/ic_song_full.xml" value="0.1775" />
+        <entry key="app/src/main/res/layout-land/activity_tablet.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_item_detail.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.23229166666666667" />
+        <entry key="app/src/main/res/layout/activity_tablet.xml" value="0.25" />
         <entry key="app/src/main/res/layout/album_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dialog_details_song.xml" value="0.4546875" />
         <entry key="app/src/main/res/layout/fragment_album.xml" value="0.42135416666666664" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.42135416666666664" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.13697916666666668" />
+        <entry key="app/src/main/res/layout/fragment_item_detail.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/fragment_song.xml" value="0.42135416666666664" />
+        <entry key="app/src/main/res/layout/fragment_tablet_album.xml" value="0.44166666666666665" />
+        <entry key="app/src/main/res/layout/fragment_tablet_song.xml" value="0.15833333333333333" />
+        <entry key="app/src/main/res/layout/item_list_content.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/song_item.xml" value="0.40370370370370373" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.13697916666666668" />
       </map>

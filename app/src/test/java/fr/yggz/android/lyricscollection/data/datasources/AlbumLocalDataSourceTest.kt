@@ -15,19 +15,19 @@ class AlbumLocalDataSourceTest {
     private lateinit var albumLocalDataSource: AlbumLocalDataSource
     private lateinit var albumDao: AlbumDao
 
-    private val localAlbums : List<AlbumDb> = listOf(
+    private val localAlbums: List<AlbumDb> = listOf(
         AlbumDb(1, "album 1", false),
         AlbumDb(1, "album 1", false)
     )
 
     @Before
-    fun setUp(){
+    fun setUp() {
         albumDao = Mockito.mock(AlbumDao::class.java)
         albumLocalDataSource = AlbumLocalDataSourceImpl(albumDao)
     }
 
     @Test
-    fun retrieveLocalAlbums(): Unit = runBlocking{
+    fun retrieveLocalAlbums(): Unit = runBlocking {
         Mockito.`when`(albumDao.getAlbums()).thenReturn(flow {
             emit(localAlbums)
         })
@@ -37,16 +37,16 @@ class AlbumLocalDataSourceTest {
     }
 
     @Test
-    fun insertLocalAlbums(): Unit = runBlocking{
+    fun insertLocalAlbums(): Unit = runBlocking {
         Mockito.`when`(albumDao.insert(localAlbums)).thenReturn(Mockito.any())
         albumLocalDataSource.insertAlbums(localAlbums)
         Mockito.verify(albumDao, Mockito.times(1)).insert(localAlbums)
     }
 
     @Test
-    fun setAlbumFavorite(): Unit = runBlocking{
-        Mockito.`when`(albumDao.updateFavorite(true, 2)).then{  }
-        albumLocalDataSource.setAlbumFavorite( 2, true)
+    fun setAlbumFavorite(): Unit = runBlocking {
+        Mockito.`when`(albumDao.updateFavorite(true, 2)).then { }
+        albumLocalDataSource.setAlbumFavorite(2, true)
         Mockito.verify(albumDao, Mockito.times(1)).updateFavorite(true, 2)
     }
 }

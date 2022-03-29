@@ -9,14 +9,14 @@ import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class SplashViewModel: ViewModel(), KoinComponent {
+class SplashViewModel : ViewModel(), KoinComponent {
     private val syncSongsUseCase: SyncSongsUseCase by inject()
     val syncResultState = StateDataLiveData<String?>()
 
-    fun syncSongs(){
+    fun syncSongs() {
         viewModelScope.launch {
             syncResultState.postLoading()
-            when(val result = syncSongsUseCase.invoke()){
+            when (val result = syncSongsUseCase.invoke()) {
                 is Result.Success -> {
                     syncResultState.postSuccess(result.data)
                 }

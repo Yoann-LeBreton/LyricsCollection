@@ -14,12 +14,13 @@ data class StateData<out T>(val status: Status, val data: T?, val throwable: Thr
         fun <T> loading(): StateData<T> {
             return StateData(Status.LOADING, null, null)
         }
+
         fun <T> none(): StateData<T> {
             return StateData(Status.NONE, null, null)
         }
     }
 
-    enum class Status{
+    enum class Status {
         SUCCESS,
         ERROR,
         LOADING,

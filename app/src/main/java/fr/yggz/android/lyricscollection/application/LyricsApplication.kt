@@ -10,7 +10,7 @@ class LyricsApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        startKoin{
+        startKoin {
             androidContext(this@LyricsApplication)
             modules(
                 DatabaseModule,

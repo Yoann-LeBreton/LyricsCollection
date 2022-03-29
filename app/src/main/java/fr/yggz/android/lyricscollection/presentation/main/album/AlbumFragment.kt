@@ -10,15 +10,27 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import fr.yggz.android.lyricscollection.databinding.FragmentAlbumBinding
+import fr.yggz.android.lyricscollection.presentation.adapters.AlbumAdapter
 
 class AlbumFragment : Fragment() {
 
     private var _binding: FragmentAlbumBinding? = null
-    private val _albumViewModel : AlbumViewModel by viewModels()
+    private val _albumViewModel: AlbumViewModel by viewModels()
 
     private val binding get() = _binding!!
     private lateinit var _albumAdapter: AlbumAdapter
     private lateinit var _layoutManager: LinearLayoutManager
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        _albumAdapter = AlbumAdapter(emptyList())
+        _albumAdapter.onFavClick = { album ->
+            album?.let {
+                _albumViewModel.updateAlbumFavorite(it.id, !it.favorite)
+            }
+        }
+        _albumAdapter.onItemClick = {}
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,26 +48,17 @@ class AlbumFragment : Fragment() {
         recyclerViewAlbums.addItemDecoration(
             DividerItemDecoration(requireContext(), _layoutManager.orientation)
         )
-        _albumViewModel.albums.observe(viewLifecycleOwner){
+        _albumViewModel.albums.observe(viewLifecycleOwner) {
             _albumAdapter.albumList = it
             _albumAdapter.notifyDataSetChanged()
         }
-        _albumViewModel.error.observe(viewLifecycleOwner){
+        _albumViewModel.error.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
         }
         _albumViewModel.getAlbums()
         return root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        _albumAdapter = AlbumAdapter(emptyList())
-        _albumAdapter.onFavClick = { album ->
-            album?.let {
-                _albumViewModel.updateAlbumFavorite(it.id, !it.favorite)
-            }
-        }
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

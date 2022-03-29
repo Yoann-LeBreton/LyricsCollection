@@ -10,4 +10,5 @@ val UseCasesModule: Module = module {
     single { GetAlbumsUseCase() }
     single { SetAlbumFavoriteUseCase() }
     single { SetSongFavoriteUseCase() }
+    single { GetSongsByAlbumIdUseCase() }
 }

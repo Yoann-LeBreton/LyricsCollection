@@ -15,15 +15,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 val DataSourceModule: Module = module {
     single { createClient() }
     single(definition = { retrofitWS<SongsApi>(get(), BuildConfig.BASE_URL) })
-    single<SongsRemoteDataSource>(definition = { SongsRemoteDataSourceImpl(get())})
-    single<SongsLocalDataSource> (definition = { SongsLocalDataSourceImpl(songDao = get()) })
-    single<AlbumLocalDataSource> (definition = { AlbumLocalDataSourceImpl(albumDao = get()) })
+    single<SongsRemoteDataSource>(definition = { SongsRemoteDataSourceImpl(get()) })
+    single<SongsLocalDataSource>(definition = { SongsLocalDataSourceImpl(songDao = get()) })
+    single<AlbumLocalDataSource>(definition = { AlbumLocalDataSourceImpl(albumDao = get()) })
 }
 
-fun provideSongsLocalDataSource(songDao: SongDao): SongsLocalDataSource{
+fun provideSongsLocalDataSource(songDao: SongDao): SongsLocalDataSource {
     return SongsLocalDataSourceImpl(songDao = songDao)
 }
-fun provideAlbumLocalDataSource(albumDao: AlbumDao) : AlbumLocalDataSource{
+
+fun provideAlbumLocalDataSource(albumDao: AlbumDao): AlbumLocalDataSource {
     return AlbumLocalDataSourceImpl(albumDao = albumDao)
 }
 
@@ -36,9 +37,10 @@ inline fun <reified T> retrofitWS(okHttpClient: OkHttpClient, url: String): T {
     return retrofit.create(T::class.java)
 }
 
-private fun createClient(): OkHttpClient{
+private fun createClient(): OkHttpClient {
     val loggingInterceptor = HttpLoggingInterceptor().apply {
-        level = if(BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.BASIC
+        level =
+            if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.BASIC
     }
     return OkHttpClient.Builder()
         .addInterceptor(loggingInterceptor)

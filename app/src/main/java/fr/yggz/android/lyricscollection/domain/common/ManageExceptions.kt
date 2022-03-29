@@ -3,28 +3,28 @@ package fr.yggz.android.lyricscollection.domain.common
 import android.util.Log
 
 object ManageExceptions {
-    abstract class CustomException(message: String): Exception(message)
+    abstract class CustomException(message: String) : Exception(message)
 
-    class ServiceUnavailableException(message: String): CustomException(message)
-    class ServiceNotFoundException(message: String): CustomException(message)
-    class ServiceInternalErrorException(message: String): CustomException(message)
-    class UnauthorizedException(message: String): CustomException(message)
-    class InvalidParameterException(message: String): CustomException(message)
-    class ResponseBodyEmptyException(message: String): CustomException(message)
-    class ServiceConflictException(message: String): CustomException(message)
-    class ReadLocalDBException(message: String): CustomException(message)
-    class WriteLocalDBException(message: String): CustomException(message)
-    class UnknowException(message: String): CustomException(message)
+    class ServiceUnavailableException(message: String) : CustomException(message)
+    class ServiceNotFoundException(message: String) : CustomException(message)
+    class ServiceInternalErrorException(message: String) : CustomException(message)
+    class UnauthorizedException(message: String) : CustomException(message)
+    class InvalidParameterException(message: String) : CustomException(message)
+    class ResponseBodyEmptyException(message: String) : CustomException(message)
+    class ServiceConflictException(message: String) : CustomException(message)
+    class ReadLocalDBException(message: String) : CustomException(message)
+    class WriteLocalDBException(message: String) : CustomException(message)
+    class UnknowException(message: String) : CustomException(message)
 
-    fun manageNetworkError(errorCode: Int, messageError: String):CustomException {
+    fun manageNetworkError(errorCode: Int, messageError: String): CustomException {
         Log.e("Network Error", "network error $errorCode: $messageError")
-        return when(errorCode){
-            NetworkCodeConstants.BAD_REQUEST ->  InvalidParameterException(messageError)
-            NetworkCodeConstants.FORBIDDEN ->  UnauthorizedException(messageError)
-            NetworkCodeConstants.NOT_FOUND ->  ServiceNotFoundException(messageError)
-            NetworkCodeConstants.CONFLICT ->  ServiceConflictException(messageError)
-            NetworkCodeConstants.INTERNAL_SERVER_ERROR ->  ServiceInternalErrorException(messageError)
-            NetworkCodeConstants.SERVICE_UNAIVALABLE ->  ServiceUnavailableException(messageError)
+        return when (errorCode) {
+            NetworkCodeConstants.BAD_REQUEST -> InvalidParameterException(messageError)
+            NetworkCodeConstants.FORBIDDEN -> UnauthorizedException(messageError)
+            NetworkCodeConstants.NOT_FOUND -> ServiceNotFoundException(messageError)
+            NetworkCodeConstants.CONFLICT -> ServiceConflictException(messageError)
+            NetworkCodeConstants.INTERNAL_SERVER_ERROR -> ServiceInternalErrorException(messageError)
+            NetworkCodeConstants.SERVICE_UNAIVALABLE -> ServiceUnavailableException(messageError)
             else -> UnknowException(messageError)
         }
     }
